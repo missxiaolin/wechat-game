@@ -3,6 +3,7 @@ import { Director } from "./js/Director.js";
 import { BackGroud } from "./js/runtime/BackGroud.js";
 import { DataStore } from "./js/base/DataStore.js";
 import { Land } from "./js/runtime/Land.js";
+import { Birds } from "./js/player/Birds.js";
 
 // 初始化整个游戏的精灵，作为游戏入口
 export class Main {
@@ -17,6 +18,7 @@ export class Main {
     }
 
     onResourceFirstLoaded(map) {
+        this.dataStore.canvas = this.canvas
         this.dataStore.ctx = this.ctx
         this.dataStore.res = map
         this.init()
@@ -29,6 +31,7 @@ export class Main {
         this.dataStore.put('pencils', [])
             .put('background', BackGroud)
             .put('land', Land)
+            .put('birds',Birds)
 
         // 要在游戏运行之前先创建铅笔
         this.director.createPencil()

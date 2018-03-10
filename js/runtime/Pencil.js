@@ -1,5 +1,6 @@
 import { Sprite } from "../base/Sprite.js";
 import { Director } from "../Director.js";
+import { DataStore } from "../base/DataStore.js";
 
 // 铅笔的基类
 export class Pencil extends Sprite {
@@ -9,7 +10,7 @@ export class Pencil extends Sprite {
             0, 0,
             image.width, image.height,
             // 刚好在右侧看不到的位置
-            window.innerWidth, 0,
+            DataStore.getInstance().canvas.width, 0,
             image.width, image.height)
         this.top = top
     }

@@ -1,5 +1,6 @@
 import { Sprite } from "../base/Sprite.js";
 import { Director } from "../Director.js";
+import { DataStore } from "../base/DataStore.js";
 
 // 不断移动的陆地类
 export class Land extends Sprite {
@@ -7,7 +8,7 @@ export class Land extends Sprite {
         const image = Sprite.getImage('land')
         super(image, 0, 0,
             image.width, image.height,
-            0, window.innerHeight - image.height,
+            0, DataStore.getInstance().canvas.height - image.height,
             image.width, image.height);
         //地板的水平变化坐标
         this.landX = 0;
@@ -18,7 +19,7 @@ export class Land extends Sprite {
     draw() {
         this.landX = this.landX + this.landSpeed;
         // 如果坐标大于图片宽度制0
-        if (this.landX > (this.img.width - window.innerWidth)) {
+        if (this.landX > (this.img.width - DataStore.getInstance().canvas.width)) {
             this.landX = 0;
         }
         super.draw(this.img,
