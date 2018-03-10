@@ -14,8 +14,12 @@ export class Director {
     }
 
     // 运行
-    run(){
-        const backgroundSprite = this.dataStore.get('background')
-        backgroundSprite.draw()
+    run() {
+        this.dataStore.get('background').draw()
+        this.dataStore.get('land').draw()
+        let timer = requestAnimationFrame(() => this.run())
+        this.dataStore.put('timer', timer)
+        // 停止地板移动
+        // cancelAnimationFrame(this.dataStore.get('timer'))
     }
 }

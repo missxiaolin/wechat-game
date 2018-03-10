@@ -2,6 +2,7 @@ import { ResourceLoader } from "./js/base/ResourceLoader.js";
 import { Director } from "./js/Director.js";
 import { BackGroud } from "./js/runtime/BackGroud.js";
 import { DataStore } from "./js/base/DataStore.js";
+import { Land } from "./js/runtime/Land.js";
 
 // 初始化整个游戏的精灵，作为游戏入口
 export class Main {
@@ -22,6 +23,7 @@ export class Main {
 
     init() {
         this.dataStore.put('background', BackGroud)
+                        .put('land',Land)
         Director.getInstance().run()
     }
  }
