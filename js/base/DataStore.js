@@ -12,7 +12,13 @@ export class DataStore {
         this.map = new Map();
     }
 
+    /**
+     * 类
+     * @param {*} key 
+     * @param {*} value 
+     */
     put(key, value) {
+        // 如果是类先实例化
         if (typeof value === 'function') {
             value = new value();
         }
