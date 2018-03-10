@@ -23,6 +23,9 @@ export class Main {
     }
 
     init() {
+        // 判断游戏是否结束
+        this.director.isGameOver = false
+
         this.dataStore.put('pencils', [])
             .put('background', BackGroud)
             .put('land', Land)

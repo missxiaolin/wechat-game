@@ -26,6 +26,13 @@ export class Director {
 
     // 运行
     run() {
+        // 判断游戏是否结束
+        if (this.isGameOver) {
+            // 停止地板移动
+            cancelAnimationFrame(this.dataStore.get('timer'))
+            this.dataStore.destroy()
+            return;
+        }
         this.dataStore.get('background').draw()
         // 铅笔
         const pencils = this.dataStore.get('pencils')
@@ -49,7 +56,6 @@ export class Director {
 
         let timer = requestAnimationFrame(() => this.run())
         this.dataStore.put('timer', timer)
-        // 停止地板移动
-        // cancelAnimationFrame(this.dataStore.get('timer'))
+
     }
 }
