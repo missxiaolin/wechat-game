@@ -9,7 +9,24 @@ export class Main {
         const loader = ResourceLoader.create()
         loader.onLoaded(map => this.onResourceFirstLoaded(map))
 
-        Director.getInstance()
+        let image = new Image()
+        image.src = './res/background.png'
+
+        image.onload = () => {
+            this.ctx.drawImage(
+                image,
+                0,
+                0,
+                image.width,
+                image.height,
+                0,
+                0,
+                image.width,
+                image.height
+            )
+        }
+
+        
     }
 
     onResourceFirstLoaded (map) {
