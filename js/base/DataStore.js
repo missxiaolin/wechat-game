@@ -26,10 +26,17 @@ export class DataStore {
         return this;
     }
 
+    /**
+     * 获取
+     * @param {*} key 
+     */
     get(key) {
         return this.map.get(key);
     }
 
+    /**
+     * 销毁
+     */
     destroy() {
         for (let value of this.map.values()) {
             value = null;
