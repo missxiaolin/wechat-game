@@ -19,10 +19,20 @@ export class Main {
         loader.onLoaded(map => this.onResourceFirstLoaded(map))
     }
 
+    // 音乐
+    createBackgroundMusic() {
+        const bgm = wx.createInnerAudioContext()
+        bgm.autoplay = true
+        bgm.loop = true
+        bgm.src = './res/bgm.mp3'
+    }
+
     onResourceFirstLoaded(map) {
         this.dataStore.canvas = this.canvas
         this.dataStore.ctx = this.ctx
         this.dataStore.res = map
+        // 音乐
+        this.createBackgroundMusic()
         this.init()
     }
 
@@ -45,7 +55,7 @@ export class Main {
     }
 
     registerEvent() {
-        wx.onTouchStart(()=>{
+        wx.onTouchStart(() => {
             if (this.director.isGameOver) {
                 console.log('游戏开始');
                 this.init();

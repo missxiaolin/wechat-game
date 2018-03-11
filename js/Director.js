@@ -16,6 +16,7 @@ export class Director {
         return Director.instance;
     }
 
+    // 创建铅笔
     createPencil() {
         const minTop = DataStore.getInstance().canvas.height / 8
         const maxTop = DataStore.getInstance().canvas.height / 2
@@ -34,6 +35,8 @@ export class Director {
             // 停止地板移动
             cancelAnimationFrame(this.dataStore.get('timer'))
             this.dataStore.destroy()
+            // 加快触发 JavaScrpitCore Garbage Collection（垃圾回收），GC 时机是由 JavaScrpitCore 来控制的，并不能保证调用后马上触发 GC。
+            wx.triggerGC()
             return;
         }
         this.dataStore.get('background').draw()
@@ -133,6 +136,11 @@ export class Director {
         //加分逻辑
         if (birds.birdsX[0] > pencils[0].x + pencils[0].width
             && score.isScore) {
+            wx.vibrateShort({
+                success: function(){
+                    console.log('振动')
+                }
+            })
             score.isScore = false;
             score.scoreNumber++;
         }
