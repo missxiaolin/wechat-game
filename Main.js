@@ -31,10 +31,25 @@ export class Main {
         this.dataStore.put('pencils', [])
             .put('background', BackGroud)
             .put('land', Land)
-            .put('birds',Birds)
+            .put('birds', Birds)
+
+        this.registerEvent()
 
         // 要在游戏运行之前先创建铅笔
         this.director.createPencil()
         this.director.run()
+    }
+
+    registerEvent() {
+        this.canvas.addEventListener('touchstart', e => {
+            //屏蔽掉JS的事件冒泡
+            e.preventDefault();
+            if (this.director.isGameOver) {
+                console.log('游戏开始');
+                this.init();
+            } else {
+                this.director.birdsEvent();
+            }
+        });
     }
 }

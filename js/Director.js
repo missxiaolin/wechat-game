@@ -61,4 +61,12 @@ export class Director {
         this.dataStore.put('timer', timer)
 
     }
+
+    birdsEvent() {
+        for (let i = 0; i <= 2; i++) {
+            this.dataStore.get('birds').y[i] =
+                this.dataStore.get('birds').birdsY[i];
+        }
+        this.dataStore.get('birds').time = 0;
+    }
 }
