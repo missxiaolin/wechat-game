@@ -10,9 +10,9 @@ import { Score } from "./js/player/Score.js";
 // 初始化整个游戏的精灵，作为游戏入口
 export class Main {
     constructor() {
-        this.canvas = document.getElementById('game_canvas')
+        this.canvas = wx.createCanvas()
         this.ctx = this.canvas.getContext('2d')
-        // 变量缓存
+        // // 变量缓存
         this.dataStore = DataStore.getInstance()
         this.director = Director.getInstance()
         const loader = ResourceLoader.create()
@@ -55,5 +55,14 @@ export class Main {
                 this.director.birdsEvent();
             }
         });
+
+        // wx.onTouchStart(function () {
+        //     if (this.director.isGameOver) {
+        //         console.log('游戏开始');
+        //         this.init();
+        //     } else {
+        //         this.director.birdsEvent();
+        //     }
+        // })
     }
 }

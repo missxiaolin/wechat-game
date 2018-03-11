@@ -1,5 +1,4 @@
 import { Sprite } from "../base/Sprite.js";
-import { Director } from "../Director.js";
 import { DataStore } from "../base/DataStore.js";
 
 // 铅笔的基类
@@ -13,10 +12,11 @@ export class Pencil extends Sprite {
             DataStore.getInstance().canvas.width, 0,
             image.width, image.height)
         this.top = top
+        this.moveSpeed = 2
     }
 
     draw() {
-        this.x = this.x - Director.getInstance().moveSpeed
+        this.x = this.x - this.moveSpeed
         super.draw(this.img,
           0, 0,
           this.width, this.height,
