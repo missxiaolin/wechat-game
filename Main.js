@@ -45,24 +45,13 @@ export class Main {
     }
 
     registerEvent() {
-        this.canvas.addEventListener('touchstart', e => {
-            //屏蔽掉JS的事件冒泡
-            e.preventDefault();
+        wx.onTouchStart(()=>{
             if (this.director.isGameOver) {
                 console.log('游戏开始');
                 this.init();
             } else {
                 this.director.birdsEvent();
             }
-        });
-
-        // wx.onTouchStart(function () {
-        //     if (this.director.isGameOver) {
-        //         console.log('游戏开始');
-        //         this.init();
-        //     } else {
-        //         this.director.birdsEvent();
-        //     }
-        // })
+        })
     }
 }
