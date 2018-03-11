@@ -5,6 +5,7 @@ import { DataStore } from "./js/base/DataStore.js";
 import { Land } from "./js/runtime/Land.js";
 import { Birds } from "./js/player/Birds.js";
 import { StartButton } from "./js/player/StartButton.js";
+import { Score } from "./js/player/Score.js";
 
 // 初始化整个游戏的精灵，作为游戏入口
 export class Main {
@@ -33,6 +34,7 @@ export class Main {
             .put('background', BackGroud)
             .put('land', Land)
             .put('birds', Birds)
+            .put('score', Score)
             .put('startButton', StartButton)
 
         this.registerEvent()

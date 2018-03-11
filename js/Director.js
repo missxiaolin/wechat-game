@@ -44,6 +44,7 @@ export class Director {
             pencils.length === 4) {
             pencils.shift();
             pencils.shift();
+            this.dataStore.get('score').isScore = true;
         }
 
         if (pencils[0].x <= (DataStore.getInstance().canvas.width - pencils[0].width) / 2 &&
@@ -56,6 +57,9 @@ export class Director {
         });
         // 地板
         this.dataStore.get('land').draw()
+
+        // 计分器
+        this.dataStore.get('score').draw()
 
         // 小鸟
         this.dataStore.get('birds').draw()
@@ -124,6 +128,13 @@ export class Director {
                 this.isGameOver = true;
                 return;
             }
+        }
+
+        //加分逻辑
+        if (birds.birdsX[0] > pencils[0].x + pencils[0].width
+            && score.isScore) {
+            score.isScore = false;
+            score.scoreNumber++;
         }
     }
 }
